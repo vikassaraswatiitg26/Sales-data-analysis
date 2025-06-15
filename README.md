@@ -2,7 +2,7 @@
 
 # 🧪 Data Exploration and Visualization Using Python (Pandas, Matplotlib, Seaborn)
 
-![Logo](https://www.google.com/search?sca_esv=3bb0e53af8618b52&sxsrf=AE3TifMobUhHHoWQCNx4dMjBiVYzXNygEg:1750010566988&q=sales+data+%5C&udm=2&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeqDdErwP5rACeJAty2zADJgeXKnD4z7v_UXM32TmNnj1pwmxcNrkVFnLviTtK6Qh7QZ7ETFlEgKlZQoYAcoHbKmDKAfYNUEMhfvG0vewyj1B9BkfFQuXSJJhEq7h3D79qA9HleJCADxibAJ86Hzb9y79KeCvwxr0X3BByyRHSIq1O5WjVA&sa=X&ved=2ahUKEwjOg8uxgfSNAxX4nGMGHS0lHa4QtKgLegQIFRAB&biw=1536&bih=730&dpr=1.25#vhid=koH1t6GneLa_JM&vssid=mosaic)
+![Logo](https://github.com/vikassaraswatiitg26/vikas_portfolio/blob/main/images/Sales.png)
 
 ## 🎯 Objective :
 
@@ -45,7 +45,7 @@ This project uses Python (with Pandas and Matplotlib/Seaborn) to analyze and vis
 
 ### 1. Counting 3-Item Combinations
 
-```python
+```
 from itertools import combinations
 from collections import Counter
 
@@ -53,4 +53,33 @@ count = Counter()
 for row in df['grouped']:
     row_list = row.split(',')
     count.update(Counter(combinations(row_list, 3)))
+```
+2. Grouping by Hour to Plot Activity
 
+```
+hours = [hour for hour, df in all_data.groupby('hour')]
+plt.plot(hours, all_data.groupby('hour').count()['Order ID'])
+plt.xticks(hours)
+plt.grid()
+plt.title("Orders per Hour")
+
+```
+3. Product Grouping and Sales Summary
+
+   ```
+   product_group = all_data.groupby('Product')
+   products = [product for product, df in product_group]
+   sales = product_group.sum()['Sales']
+
+   ```
+📈 Insights & Observations
+
+• Most orders are placed between 11 AM and 7 PM.
+• Some product combinations (e.g., phone + charger) appear frequently together.
+• Certain products have high volume but low revenue; others have the opposite.
+
+✅ Future Enhancements
+
+• Create an interactive dashboard using Plotly Dash or Streamlit.
+• Use ML models to predict product demand or recommend bundles.
+• Clean and scale the project with a modular script-based pipeline
